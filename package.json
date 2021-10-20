@@ -1,0 +1,76 @@
+{
+  "version": "0.1.0",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test --passWithNoTests",
+    "lint": "tsdx lint",
+    "prepare": "tsdx build",
+    "size": "size-limit",
+    "analyze": "size-limit --why"
+  },
+  "peerDependencies": {
+    "react": ">=16"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
+  },
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "name": "trustee_swap_currencies",
+  "author": "ShchipskiiYura",
+  "module": "dist/trustee_swap_currencies.esm.js",
+  "size-limit": [
+    {
+      "path": "dist/trustee_swap_currencies.cjs.production.min.js",
+      "limit": "10 KB"
+    },
+    {
+      "path": "dist/trustee_swap_currencies.esm.js",
+      "limit": "10 KB"
+    }
+  ],
+  "devDependencies": {
+    "@babel/preset-react": "^7.14.5",
+    "@size-limit/preset-small-lib": "^6.0.3",
+    "@types/react": "^17.0.29",
+    "@types/react-dom": "^17.0.9",
+    "autoprefixer": "^10.3.7",
+    "husky": "^7.0.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "rollup-plugin-postcss": "^4.0.1",
+    "size-limit": "^6.0.3",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.3.1",
+    "typescript": "^4.4.4"
+  },
+  "dependencies": {
+    "currency-list": "^1.0.6"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-react",
+      "@babel/preset-env"
+    ],
+    "plugins": [
+      "@babel/plugin-transform-react-jsx"
+    ]
+  }
+}
