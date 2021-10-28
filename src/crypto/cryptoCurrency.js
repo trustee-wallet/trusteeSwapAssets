@@ -11,10 +11,16 @@ export const CryptoCurrencyIcon = (props) => {
         style,
         checked,
         checkedColor,
-        themeMode
+        themeMode,
+        setBackground,
+        iconStyle,
+        tokenIconStyle
     } = props
 
     const defaultColor = themeMode === 'light' ? '#404040' : '#DADADA'
+
+    const sizeIcon = iconStyle?.fontSize || 24
+    const tokenIconSize = tokenIconStyle?.fontSize || 16
 
     switch (currencyCode) {
         case 'ETH':
@@ -37,49 +43,92 @@ export const CryptoCurrencyIcon = (props) => {
         case 'BNB_SMART':
         case 'AMB':
             return (
-                <div className='currency-circle' style={{ borderColor: colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor'] }}>
-                    <Icon icon={currencyCode} size={24} color={colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']} style={{ marginTop: 7, marginRight: 8 }} />
+                <div className='currency-circle' style={{
+                    background: setBackground ? UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor'] + '26' : '',
+                    border: setBackground ? 'none' : `2px solid ${colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']}`
+                }}>
+                    <Icon
+                        icon={currencyCode}
+                        size={sizeIcon}
+                        color={colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']}
+                        style={iconStyle}
+                    />
                 </div>
             )
         case 'TON':
             return (
-                <div className='currency-circle' style={{ borderColor: colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor'] }}>
-                    <Icon icon={currencyCode} size={24} color={colorNotActive ? colorNotActive : checked ? checkedColor : ''} style={{ marginTop: 7, marginRight: 8 }} />
+                <div className='currency-circle' style={{
+                    background: setBackground ? UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor'] + '26' : '',
+                    border: setBackground ? 'none' : `2px solid ${colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']}`
+                }}>
+                    <Icon
+                        icon={currencyCode}
+                        size={sizeIcon}
+                        color={colorNotActive ? colorNotActive : checked ? checkedColor : ''}
+                        style={iconStyle}
+                    />
                 </div>
             )
         case 'XMR':
             return (
-                <div className='currency-circle' style={{ borderColor: colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor'] }}>
-                    <Icon icon={currencyCode} size={24} color={colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']} style={{ marginTop: 7, marginRight: 8 }} />
+                <div
+                    className='currency-circle'
+                    style={{
+                        background: setBackground ? UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor'] + '26' : '',
+                        border: setBackground ? 'none' : `2px solid ${colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']}`
+                    }}>
+                    <Icon
+                        icon={currencyCode}
+                        size={sizeIcon}
+                        color={colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']}
+                        style={iconStyle}
+                    />
                 </div>
             )
         case 'USDT':
             return (
                 <div className='currency-cicle-wrap'>
-                    <div className='currency-circle' style={{ borderColor: colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor'] }}>
-                        <Icon icon='USDT' size={24} color={colorNotActive ? colorNotActive : checked ? checkedColor : UiColor['USDT'].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']} style={{ marginTop: 7, marginRight: 8 }} />
+                    <div className='currency-circle'
+                        style={{
+                            background: setBackground ? UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor'] + '26' : '',
+                            border: setBackground ? 'none' : `2px solid ${colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']}`
+                        }}>
+                        <Icon
+                            icon='USDT'
+                            size={sizeIcon}
+                            color={colorNotActive ? colorNotActive : checked ? checkedColor : UiColor['USDT'].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']}
+                            style={iconStyle}
+                        />
                     </div>
                     <Icon
                         icon='BTC'
-                        size={16}
+                        size={tokenIconSize}
                         color={colorNotActive ? colorNotActive : UiColor['BTC'].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']}
                         className='currecny-little-circle'
-                        style={{ background: themeMode === 'light' ? '#F9F9F9' : '#303030' }}
+                        style={{ background: themeMode === 'light' ? '#F9F9F9' : '#303030', ...tokenIconStyle }}
                     />
                 </div>
             )
         case 'ETH_USDT':
             return (
                 <div className='currency-cicle-wrap'>
-                    <div className='currency-circle' style={{ borderColor: colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor'] }}>
-                        <Icon icon='USDT' size={24} color={colorNotActive ? colorNotActive : checked ? checkedColor : UiColor['USDT'].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']} style={{ marginTop: 7, marginRight: 8 }} />
+                    <div className='currency-circle'
+                        style={{
+                            background: setBackground ? UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor'] + '26' : '',
+                            border: setBackground ? 'none' : `2px solid ${colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']}`
+                        }}>
+                        <Icon
+                            icon='USDT'
+                            size={sizeIcon}
+                            color={colorNotActive ? colorNotActive : checked ? checkedColor : UiColor['USDT'].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']}
+                            style={iconStyle} />
                     </div>
                     <Icon
                         icon='ETH'
-                        size={16}
+                        size={tokenIconSize}
                         color={colorNotActive ? colorNotActive : UiColor['ETH'].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']}
                         className='currecny-little-circle'
-                        style={{ background: themeMode === 'light' ? '#F9F9F9' : '#303030' }} />
+                        style={{ background: themeMode === 'light' ? '#F9F9F9' : '#303030', ...tokenIconStyle }} />
                 </div>
             )
         case 'TRX_BTT':
@@ -89,86 +138,134 @@ export const CryptoCurrencyIcon = (props) => {
         case 'TRX_WINK':
             return (
                 <div className='currency-cicle-wrap'>
-                    <div className='currency-circle' style={{ borderColor: colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor'] }}>
-                        <Icon icon={currencyCode} size={23} color={colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']} style={{ marginTop: 8, marginRight: 8 }} />
+                    <div className='currency-circle'
+                        style={{
+                            background: setBackground ? UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor'] + '26' : '',
+                            border: setBackground ? 'none' : `2px solid ${colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']}`
+                        }}>
+                        <Icon
+                            icon={currencyCode}
+                            size={sizeIcon}
+                            color={colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']}
+                            style={iconStyle}
+                        />
                     </div>
                     <Icon
                         icon='TRX'
-                        size={16}
+                        size={tokenIconSize}
                         color={colorNotActive ? colorNotActive : UiColor['TRX'].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']}
                         className='currecny-little-circle'
-                        style={{ background: themeMode === 'light' ? '#F9F9F9' : '#303030' }} />
+                        style={{ background: themeMode === 'light' ? '#F9F9F9' : '#303030', ...tokenIconStyle }} />
                 </div>
             )
         case 'TRX_SUN':
             return (
                 <div className='currency-cicle-wrap'>
-                    <div className='currency-circle' style={{ borderColor: colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor'] }}>
-                        <Icon icon={currencyCode} size={23} color={colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']} style={{ marginTop: 8, marginRight: 8 }} />
+                    <div className='currency-circle'
+                        style={{
+                            background: setBackground ? UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor'] + '26' : '',
+                            border: setBackground ? 'none' : `2px solid ${colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']}`
+                        }}>
+                        <Icon
+                            icon={currencyCode}
+                            size={sizeIcon}
+                            color={colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']}
+                            style={iconStyle} />
                     </div>
                     <Icon
                         icon='TRX'
-                        size={16}
+                        size={tokenIconSize}
                         color={colorNotActive ? colorNotActive : UiColor['TRX'].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']}
                         className='currecny-little-circle'
-                        style={{ background: themeMode === 'light' ? '#F9F9F9' : '#303030' }} />
+                        style={{ background: themeMode === 'light' ? '#F9F9F9' : '#303030', ...tokenIconStyle }} />
                 </div>
             )
         case 'TRX_USDT':
             return (
                 <div className='currency-cicle-wrap'>
-                    <div className='currency-circle' style={{ borderColor: colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor'] }}>
-                        <Icon icon='USDT' size={24} color={colorNotActive ? colorNotActive : checked ? checkedColor : UiColor['USDT'].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']} style={{ marginTop: 7, marginRight: 8 }} />
+                    <div className='currency-circle' style={{
+                        background: setBackground ? UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor'] + '26' : '',
+                        border: setBackground ? 'none' : `2px solid ${colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']}`
+                    }}>
+                        <Icon
+                            icon='USDT'
+                            size={sizeIcon}
+                            color={colorNotActive ? colorNotActive : checked ? checkedColor : UiColor['USDT'].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']}
+                            style={iconStyle} />
                     </div>
                     <Icon
                         icon='TRX'
-                        size={16}
+                        size={tokenIconSize}
                         color={colorNotActive ? colorNotActive : UiColor['TRX'].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']}
                         className='currecny-little-circle'
-                        style={{ background: themeMode === 'light' ? '#F9F9F9' : '#303030' }} />
+                        style={{ background: themeMode === 'light' ? '#F9F9F9' : '#303030', ...tokenIconStyle }} />
                 </div>
             )
         case 'TRX_BTC':
             return (
                 <div className='currency-cicle-wrap'>
-                    <div className='currency-circle' style={{ borderColor: colorNotActive ? colorNotActive : checked ? checkedColor : UiColor['BTC'].colors[themeMode === 'light' ? 'mainColor' : 'darkColor'] }}>
-                        <Icon icon='BTC' size={24} color={colorNotActive ? colorNotActive : checked ? checkedColor : UiColor['BTC'].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']} style={{ marginTop: 7, marginRight: 8 }} />
+                    <div className='currency-circle' style={{
+                        background: setBackground ? UiColor['BTC'].colors[themeMode === 'light' ? 'mainColor' : 'darkColor'] + '26' : '',
+                        border: setBackground ? 'none' : `2px solid ${colorNotActive ? colorNotActive : checked ? checkedColor : UiColor['BTC'].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']}`
+                    }}>
+                        <Icon
+                            icon='BTC'
+                            size={sizeIcon}
+                            color={colorNotActive ? colorNotActive : checked ? checkedColor : UiColor['BTC'].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']}
+                            style={iconStyle}
+                        />
                     </div>
                     <Icon
                         icon='TRX'
-                        size={16}
+                        size={tokenIconSize}
                         color={colorNotActive ? colorNotActive : UiColor['TRX'].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']}
                         className='currecny-little-circle'
-                        style={{ background: themeMode === 'light' ? '#F9F9F9' : '#303030' }} />
+                        style={{ background: themeMode === 'light' ? '#F9F9F9' : '#303030', ...tokenIconStyle }} />
                 </div>
             )
         case 'TRX_ETH':
             return (
                 <div className='currency-cicle-wrap'>
-                    <div className='currency-circle' style={{ borderColor: colorNotActive ? colorNotActive : checked ? checkedColor : UiColor['ETH'].colors[themeMode === 'light' ? 'mainColor' : 'darkColor'] }}>
-                        <Icon icon='ETH' size={24} color={colorNotActive ? colorNotActive : checked ? checkedColor : UiColor['ETH'].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']} style={{ marginTop: 7, marginRight: 8 }} />
+                    <div className='currency-circle' style={{
+                        background: setBackground ? UiColor['ETH'].colors[themeMode === 'light' ? 'mainColor' : 'darkColor'] + '26' : '',
+                        border: setBackground ? 'none' : `2px solid ${colorNotActive ? colorNotActive : checked ? checkedColor : UiColor['ETH'].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']}`
+                    }}>
+                        <Icon
+                            icon='ETH'
+                            size={sizeIcon}
+                            color={colorNotActive ? colorNotActive : checked ? checkedColor : UiColor['ETH'].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']}
+                            style={iconStyle}
+                        />
                     </div>
                     <Icon
                         icon='TRX'
-                        size={16}
+                        size={tokenIconSize}
                         color={colorNotActive ? colorNotActive : UiColor['TRX'].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']}
                         className='currecny-little-circle'
-                        style={{ background: themeMode === 'light' ? '#F9F9F9' : '#303030' }} />
+                        style={{ background: themeMode === 'light' ? '#F9F9F9' : '#303030', ...tokenIconStyle }} />
                 </div>
             )
         case 'TRX_TUSD':
         case 'ETH_TRUE_USD':
             return (
                 <div className='currency-cicle-wrap'>
-                    <div className='currency-circle' style={{ borderColor: colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor'] }}>
-                        <Icon icon='ETH_TRUE_USD' size={24} color={colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']} style={{ marginTop: 7, marginRight: 8 }} />
+                    <div className='currency-circle'
+                        style={{
+                            background: setBackground ? UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor'] + '26' : '',
+                            border: setBackground ? 'none' : `2px solid ${colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']}`
+                        }}>
+                        <Icon
+                            icon='ETH_TRUE_USD'
+                            size={sizeIcon}
+                            color={colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']}
+                            style={iconStyle} />
                     </div>
                     <Icon
                         icon={currencyCode.indexOf('TRX') !== -1 ? 'TRX' : 'ETH'}
-                        size={16}
+                        size={tokenIconSize}
                         color={colorNotActive ? colorNotActive : UiColor[currencyCode.indexOf('TRX') !== -1 ? 'TRX' : 'ETH'].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']}
                         className='currecny-little-circle'
-                        style={{ background: themeMode === 'light' ? '#F9F9F9' : '#303030' }} />
+                        style={{ background: themeMode === 'light' ? '#F9F9F9' : '#303030', ...tokenIconStyle }} />
                 </div>
             )
 
@@ -202,54 +299,89 @@ export const CryptoCurrencyIcon = (props) => {
         case 'ETH_ALPHA':
             return (
                 <div className='currency-cicle-wrap'>
-                    <div className='currency-circle' style={{ borderColor: colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor'] }}>
-                        <Icon icon={currencyCode} size={24} color={colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']} style={{ marginTop: 7, marginRight: 8 }} />
+                    <div className='currency-circle'
+                        style={{
+                            background: setBackground ? UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor'] + '26' : '',
+                            border: setBackground ? 'none' : `2px solid ${colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']}`
+                        }}>
+                        <Icon
+                            icon={currencyCode}
+                            size={sizeIcon}
+                            color={colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']}
+                            style={iconStyle} />
                     </div>
                     <Icon
                         icon='ETH'
-                        size={16}
+                        size={tokenIconSize}
                         color={colorNotActive ? colorNotActive : UiColor['ETH'].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']}
                         className='currecny-little-circle'
-                        style={{ background: themeMode === 'light' ? '#F9F9F9' : '#303030' }} />
+                        style={{ background: themeMode === 'light' ? '#F9F9F9' : '#303030', ...tokenIconStyle }} />
                 </div>
             )
         case 'ETH_KNC':
         case 'ETH_KNC_NEW':
             return (
                 <div className='currency-cicle-wrap'>
-                    <div className='currency-circle' style={{ borderColor: colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor'] }}>
-                        <Icon icon='ETH_KNC' size={24} color={colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']} style={{ marginTop: 7, marginRight: 8 }} />
+                    <div className='currency-circle' style={{
+                        background: setBackground ? UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor'] + '26' : '',
+                        border: setBackground ? 'none' : `2px solid ${colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']}`
+                    }}>
+                        <Icon
+                            icon='ETH_KNC'
+                            size={sizeIcon}
+                            color={colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']}
+                            style={iconStyle} />
                     </div>
                     <Icon
                         icon='ETH'
-                        size={16}
+                        size={tokenIconSize}
                         color={colorNotActive ? colorNotActive : UiColor['ETH'].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']}
                         className='currecny-little-circle'
-                        style={{ background: themeMode === 'light' ? '#F9F9F9' : '#303030' }} />
+                        style={{ background: themeMode === 'light' ? '#F9F9F9' : '#303030', tokenIconStyle }} />
                 </div>
             )
         case 'BTG':
             return (
-                <div className='currency-circle' style={{ borderColor: colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor'] }}>
-                    <div className='btg' style={{ borderColor: colorNotActive ? colorNotActive : checked ? checkedColor : '#E1A600' }}>
-                        <Icon icon={currencyCode} size={20} color={colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']} style={style ? style : { marginTop: 0, marginLeft: 2 }} />
+                <div className='currency-circle' style={{
+                    background: setBackground ? UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor'] + '26' : '',
+                    border: setBackground ? 'none' : `2px solid ${colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']}`
+                }}>
+                    <div className='btg' style={{ borderColor: colorNotActive ? colorNotActive : checked ? checkedColor : '#E26600' }}>
+                        <Icon
+                            icon={currencyCode}
+                            size={sizeIcon}
+                            color={colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']}
+                            style={style ? style : iconStyle} />
                     </div>
                 </div>
             )
         case 'ETH_UAX':
             return (
                 <div className='currency-cicle-wrap'>
-                    <div className='currency-circle' style={{ borderColor: colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor'] }}>
+                    <div className='currency-circle' style={{
+                        background: setBackground ? UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor'] + '26' : '',
+                        border: setBackground ? 'none' : `2px solid ${colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']}`
+                    }}>
                         {colorNotActive || checked ?
-                            <Icon icon='ETH_UAX_SELECT' color={colorNotActive ? colorNotActive : checked ? checkedColor : ''} size={24} style={{ marginTop: 7, marginRight: 8 }} />
-                            : <Icon icon={currencyCode} size={24} style={{ marginTop: 7, marginRight: 8 }} color={UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']} />}
+                            <Icon
+                                icon='ETH_UAX_SELECT'
+                                color={colorNotActive ? colorNotActive : checked ? checkedColor : ''}
+                                size={sizeIcon}
+                                style={iconStyle}
+                            />
+                            : <Icon
+                                icon={currencyCode}
+                                size={sizeIcon}
+                                style={iconStyle}
+                                color={UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']}
+                            />}
                     </div>
                     <Icon
                         icon='ETH'
-                        size={16}
+                        size={tokenIconSize}
                         color={colorNotActive ? colorNotActive : UiColor['ETH'].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']}
                         className='currecny-little-circle'
-                        style={{ background: themeMode === 'light' ? '#F9F9F9' : '#303030' }} />
+                        style={{ background: themeMode === 'light' ? '#F9F9F9' : '#303030', ...tokenIconStyle }} />
                 </div>
             )
         case 'ETH_BAT':
@@ -260,29 +392,45 @@ export const CryptoCurrencyIcon = (props) => {
         case 'ETH_NEXO':
             return (
                 <div className='currency-cicle-wrap'>
-                    <div className='currency-circle' style={{ borderColor: colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor'] }}>
-                        <Icon icon={currencyCode} size={24} color={colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']} style={{ marginTop: 7, marginRight: 8 }} />
+                    <div className='currency-circle' style={{
+                        background: setBackground ? UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor'] + '26' : '',
+                        border: setBackground ? 'none' : `2px solid ${colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']}`
+                    }}>
+                        <Icon
+                            icon={currencyCode}
+                            size={sizeIcon}
+                            color={colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']}
+                            style={iconStyle}
+                        />
                     </div>
                     <Icon
                         icon='ETH'
-                        size={16}
+                        size={tokenIconSize}
                         color={colorNotActive ? colorNotActive : UiColor['ETH'].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']}
                         className='currecny-little-circle'
-                        style={{ background: themeMode === 'light' ? '#F9F9F9' : '#303030' }} />
+                        style={{ background: themeMode === 'light' ? '#F9F9F9' : '#303030', ...tokenIconStyle }} />
                 </div>
             )
         case 'ETH_SHIB':
             return (
                 <div className='currency-cicle-wrap'>
-                    <div className='currency-circle' style={{ borderColor: colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor'] }}>
-                        <Icon icon={checked ? 'ETH_SHIB_BLACK' : currencyCode} size={24} color={colorNotActive ? colorNotActive : checked ? checkedColor : ''} style={{ marginTop: 7, marginRight: 8 }} />
+                    <div className='currency-circle' style={{
+                        background: setBackground ? UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor'] + '26' : '',
+                        border: setBackground ? 'none' : `2px solid ${colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']}`
+                    }}>
+                        <Icon
+                            icon={checked ? 'ETH_SHIB_BLACK' : currencyCode}
+                            size={sizeIcon}
+                            color={colorNotActive ? colorNotActive : checked ? checkedColor : ''}
+                            style={iconStyle}
+                        />
                     </div>
                     <Icon
                         icon='ETH'
-                        size={16}
+                        size={tokenIconSize}
                         color={colorNotActive ? colorNotActive : UiColor['ETH'].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']}
                         className='currecny-little-circle'
-                        style={{ background: themeMode === 'light' ? '#F9F9F9' : '#303030' }} />
+                        style={{ background: themeMode === 'light' ? '#F9F9F9' : '#303030', ...tokenIconStyle }} />
                 </div>
             )
         case 'BNB_SMART_ADA':
@@ -290,61 +438,100 @@ export const CryptoCurrencyIcon = (props) => {
         case 'BNB_SMART_CAKE':
             return (
                 <div className='currency-cicle-wrap'>
-                    <div className='currency-circle' style={{ borderColor: colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor'] }}>
-                        <Icon icon={currencyCode} size={24} color={colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']} style={{ marginTop: 7, marginRight: 8 }} />
+                    <div className='currency-circle' style={{
+                        background: setBackground ? UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor'] + '26' : '',
+                        border: setBackground ? 'none' : `2px solid ${colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']}`
+                    }}>
+                        <Icon
+                            icon={currencyCode}
+                            size={sizeIcon}
+                            color={colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']}
+                            style={iconStyle}
+                        />
                     </div>
                     <Icon
                         icon='BNB_SMART'
-                        size={16}
+                        size={tokenIconSize}
                         color={colorNotActive ? colorNotActive : UiColor['BNB_SMART'].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']}
                         className='currecny-little-circle'
-                        style={{ background: themeMode === 'light' ? '#F9F9F9' : '#303030' }} />
+                        style={{ background: themeMode === 'light' ? '#F9F9F9' : '#303030', ...tokenIconStyle }} />
                 </div>
             )
         case 'BNB_SMART_BTT':
             return (
                 <div className='currency-cicle-wrap'>
-                    <div className='currency-circle' style={{ borderColor: colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor'] }}>
-                        <Icon icon='TRX_BTT' size={23} color={colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']} style={{ marginTop: 8, marginRight: 8 }} />
+                    <div className='currency-circle' style={{
+                        background: setBackground ? UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor'] + '26' : '',
+                        border: setBackground ? 'none' : `2px solid ${colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']}`
+                    }}>
+                        <Icon
+                            icon='TRX_BTT'
+                            size={sizeIcon}
+                            color={colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']}
+                            style={iconStyle}
+                        />
                     </div>
                     <Icon
                         icon='BNB_SMART'
-                        size={16}
+                        size={tokenIconSize}
                         color={colorNotActive ? colorNotActive : UiColor['BNB_SMART'].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']}
                         className='currecny-little-circle'
-                        style={{ background: themeMode === 'light' ? '#F9F9F9' : '#303030' }} />
+                        style={{ background: themeMode === 'light' ? '#F9F9F9' : '#303030', ...tokenIconStyle }} />
                 </div>
             )
         case 'BNB_SMART_USDT':
             return (
                 <div className='currency-cicle-wrap'>
-                    <div className='currency-circle' style={{ borderColor: colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor'] }}>
-                        <Icon icon='USDT' size={24} color={colorNotActive ? colorNotActive : checked ? checkedColor : UiColor['USDT'].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']} style={{ marginTop: 7, marginRight: 8 }} />
+                    <div className='currency-circle' style={{
+                        background: setBackground ? UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor'] + '26' : '',
+                        border: setBackground ? 'none' : `2px solid ${colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']}`
+                    }}>
+                        <Icon
+                            icon='USDT'
+                            size={sizeIcon}
+                            color={colorNotActive ? colorNotActive : checked ? checkedColor : UiColor['USDT'].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']}
+                            style={iconStyle}
+                        />
                     </div>
                     <Icon
                         icon='BNB_SMART'
-                        size={16}
+                        size={tokenIconSize}
                         color={colorNotActive ? colorNotActive : UiColor['BNB_SMART'].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']}
                         className='currecny-little-circle'
-                        style={{ background: themeMode === 'light' ? '#F9F9F9' : '#303030' }} />
+                        style={{ background: themeMode === 'light' ? '#F9F9F9' : '#303030', ...tokenIconStyle }} />
                 </div>
             )
         case 'MATIC':
             return (
-                <div className='currency-circle' style={{ borderColor: colorNotActive ? colorNotActive : checked ? checkedColor : UiColor['ETH_MATIC'].colors[themeMode === 'light' ? 'mainColor' : 'darkColor'] }}>
-                    <Icon icon='ETH_MATIC' size={24} color={colorNotActive ? colorNotActive : checked ? checkedColor : UiColor['ETH_MATIC'].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']} style={{ marginTop: 7, marginRight: 8 }} />
+                <div className='currency-circle' style={{
+                    background: setBackground ? UiColor['ETH_MATIC'].colors[themeMode === 'light' ? 'mainColor' : 'darkColor'] + '26' : '',
+                    border: setBackground ? 'none' : `2px solid ${colorNotActive ? colorNotActive : checked ? checkedColor : UiColor['ETH_MATIC'].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']}`
+                }}>
+                    <Icon
+                        icon='ETH_MATIC'
+                        size={sizeIcon}
+                        color={colorNotActive ? colorNotActive : checked ? checkedColor : UiColor['ETH_MATIC'].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']}
+                        style={iconStyle}
+                    />
                 </div>
             )
 
         default:
             return (
                 <div className='currency-circle' style={{ borderColor: colorNotActive ? colorNotActive : checked ? checkedColor : defaultColor }}>
-                    <Icon icon='DEFAULT_COIN' size={24} color={colorNotActive ? colorNotActive : checked ? checkedColor : defaultColor} style={{ marginTop: 7, marginRight: 8 }} />
+                    <Icon
+                        icon='DEFAULT_COIN'
+                        size={sizeIcon}
+                        color={colorNotActive ? colorNotActive : checked ? checkedColor : defaultColor}
+                        style={iconStyle}
+                    />
                 </div>
             )
     }
 }
 
 CryptoCurrencyIcon.defaultProps = {
-    themeMode: 'light'
+    themeMode: 'light',
+    tokenIconStyle: {},
+    iconStyle: {}
 }

@@ -9,10 +9,14 @@ export const FiatCurrencyIcon = (props) => {
         colorNotActive,
         checked,
         checkedColor,
-        themeMode
+        themeMode,
+        setBackground,
+        iconStyle
     } = props
 
     const defaultColor = themeMode === 'light' ? '#404040' : '#DADADA'
+
+    const sizeIcon = iconStyle?.fontSize || 24
 
     switch (currencyCode) {
         case 'UAH':
@@ -61,15 +65,31 @@ export const FiatCurrencyIcon = (props) => {
         case 'VND':
         case 'ZAR':
             return (
-                <div className='currency-circle' style={{ borderColor: colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor'] }}>
-                    <Icon icon={currencyCode} size={24} color={colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']} style={{ marginTop: 7, marginRight: 8 }} />
+                <div className='currency-circle' style={{
+                    background: setBackground ? UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor'] + '26' : '',
+                    border: setBackground ? 'none' : `2px solid ${colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']}`
+                }}
+                >
+                    <Icon
+                        icon={currencyCode}
+                        size={sizeIcon}
+                        color={colorNotActive ? colorNotActive : checked ? checkedColor : UiColor[currencyCode].colors[themeMode === 'light' ? 'mainColor' : 'darkColor']}
+                        style={iconStyle}
+                    />
                 </div>
             )
 
         default:
             return (
-                <div className='currency-circle' style={{ borderColor: colorNotActive ? colorNotActive : checked ? checkedColor : defaultColor }}>
-                    <Icon icon='FIAT_DEFAULT' size={24} color={colorNotActive ? colorNotActive : checked ? checkedColor : defaultColor} style={{ marginTop: 7, marginRight: 8 }} />
+                <div
+                    className='currency-circle'
+                    style={{ borderColor: colorNotActive ? colorNotActive : checked ? checkedColor : defaultColor }}>
+                    <Icon
+                        icon='FIAT_DEFAULT'
+                        size={sizeIcon}
+                        color={colorNotActive ? colorNotActive : checked ? checkedColor : defaultColor}
+                        style={iconStyle}
+                    />
                 </div>
             )
     }

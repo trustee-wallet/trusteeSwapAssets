@@ -10,17 +10,19 @@ const blockchainDict = {
     TRON: 'TRX',
     BNB: 'BNB_SMART',
     BITCOIN: 'BTC',
-    SOLANA: 'SOL'
+    SOLANA: 'SOL',
+    MATIC: 'ETH_MATIC'
 }
 
 export function getCurrencyName(code, locale) {
     const lang = locale || 'en'
     return typeof CryptoCurrencies[code] !== 'undefined' && CryptoCurrencies[code] ? CryptoCurrencies[code].currencyName :
-        (typeof CurrencyList.get(code, lang) !== 'undefined' && CurrencyList.get(code, lang) ? CurrencyList.get(code, lang).name : code)
+        typeof CurrencyList.get(code, lang) !== 'undefined' && CurrencyList.get(code, lang) ? CurrencyList.get(code, lang).name : false
 }
 
 export function getCurrencyCode(code) {
-    return typeof CryptoCurrencies[code] !== 'undefined' && CryptoCurrencies[code] ? CryptoCurrencies[code].currencySymbol : (FiatCurrencyCode[code] ? FiatCurrencyCode[code] : code)
+    return typeof CryptoCurrencies[code] !== 'undefined' && CryptoCurrencies[code] ? CryptoCurrencies[code].currencySymbol :
+        FiatCurrencyCode[code] ? FiatCurrencyCode[code] : false
 }
 
 export function getTxLink(code) {
@@ -36,5 +38,5 @@ export function getTokenNet(code) {
 }
 
 export function getPaywayName(code) {
-    return typeof PaywayName[code] !== 'undefined' &&  PaywayName[code] ?  PaywayName[code] : code
+    return typeof PaywayName[code] !== 'undefined' && PaywayName[code] ? PaywayName[code] : code
 }
